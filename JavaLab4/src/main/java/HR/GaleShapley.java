@@ -6,10 +6,7 @@ package HR;
 import java.util.*;
 
 /* Implemented the Gale-Shapley Algorithm for solving the HR Stable Matching Problem
-   However, from what I've read, this algorithm requires the number of elements (residents) be equal to the number of partitions (hospitals).
-   Otherwise, a problem may have multiple stable matchings, not all of the same size.
-   Also, each element should rank every single partition and vice-versa. Therefore, I will use such an example in order to
-   illustrate the functionality.
+   However, each element should rank every single partition and vice-versa. Therefore, I will use such an example in order to illustrate the functionality.
 */
 
 public class GaleShapley {
