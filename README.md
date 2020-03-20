@@ -1,3 +1,3 @@
 # AdvancedProgramming
-CS Java Labs
+Java Labs
 Calin Irina, E2
