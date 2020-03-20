@@ -82,6 +82,7 @@ public class Main {
         GaleShapley GSModel = new GaleShapley(GSResidentList, GSHospitalList, GSResPrefMap, GSHosPrefMap);
 
         System.out.println("\n\tBONUS PART:");
+        System.out.println("Uncomment the last line of main.");
         //GSModel.GetMatch();
     }
 }
