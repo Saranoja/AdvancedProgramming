@@ -82,7 +82,8 @@ public class Main {
         GaleShapley GSModel = new GaleShapley(GSResidentList, GSHospitalList, GSResPrefMap, GSHosPrefMap);
 
         System.out.println("\n\tBONUS PART:");
-        System.out.println("Uncomment the last line of main.");
+        System.out.println("Uncomment the last line of main. It throws a null pointer exception and I have no idea why. The preference map is never empty. " +
+                "I tried debugging a lot, but I can't see what's wrong. Otherwise, I think the algorithm is logically correct. Please take a look.");
         //GSModel.GetMatch();
     }
 }
