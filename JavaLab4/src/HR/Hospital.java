@@ -1,5 +1,6 @@
 //Author: Calin Irina, I2E2
 package HR;
+
 public class Hospital implements Type {
     private String name;
     private int capacity;
@@ -29,6 +30,10 @@ public class Hospital implements Type {
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;
+    }
+
+    public void DecreaseCapacity() {
+        this.capacity -= 1;
     }
 
     @Override

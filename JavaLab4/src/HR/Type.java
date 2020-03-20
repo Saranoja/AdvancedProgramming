@@ -10,5 +10,4 @@ public interface Type extends Comparable {
         }
         return 0;
     }
-
 }
