@@ -2,6 +2,8 @@ package DMS; /**
  * @author : Calin Irina, I2E2
  */
 //Note: I have changed some paths there in order to test my code
+//I have switched the load/save methods to Plain Text mode. This means that now the objects are "translated" to ascii
+//by writing their attributes in plain text and, for the reverse process, calling the constructor using the stored lines as arguments
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,7 +16,7 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //app.testLoadView();
+        app.testLoadView();
         Shell shell = new Shell();
         try {
             shell.Start();

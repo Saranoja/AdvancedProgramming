@@ -1,12 +1,10 @@
 package DMS;
+/**
+ * @author : Calin Irina, I2E2
+ */
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toList;
 
 public class ViewCommand implements Command {
     public static void StartCommand(Scanner scanner) throws IOException, InvalidCatalogException {
