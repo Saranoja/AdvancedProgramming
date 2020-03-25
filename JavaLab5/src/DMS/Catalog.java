@@ -59,8 +59,6 @@ public class Catalog implements Serializable {
 
     @Override
     public String toString() {
-        return "DMS.Catalog{" +
-                "name='" + name + '\'' +
-                ", path='" + path + "} ";
+        return path;
     }
 }

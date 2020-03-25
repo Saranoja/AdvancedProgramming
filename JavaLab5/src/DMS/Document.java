@@ -10,11 +10,15 @@ public class Document implements Serializable {
     private String id;
     private String name;
     private String location;
-    private Map<String, Object> tags = new HashMap<>();
+    private Map<String, String> tags = new HashMap<>();
 
     public Document(String id, String name, String location) {
         this.id = id;
         this.name = name;
+        this.location = location;
+    }
+
+    public Document(String location) {
         this.location = location;
     }
 
@@ -34,7 +38,7 @@ public class Document implements Serializable {
         this.name = name;
     }
 
-    public void addTag(String key, Object obj) {
+    public void addTag(String key, String obj) {
         tags.put(key, obj);
     }
 
@@ -46,17 +50,17 @@ public class Document implements Serializable {
         this.location = location;
     }
 
-    public Map<String, Object> getTags() {
+    public Map<String, String> getTags() {
         return tags;
     }
 
-    public void setTags(Map<String, Object> tags) {
+    public void setTags(Map<String, String> tags) {
         this.tags = tags;
     }
 
     @Override
     public String toString() {
-        return "DMS.Document: " +
+        return "Document: " +
                 name + "; ";
     }
 }
