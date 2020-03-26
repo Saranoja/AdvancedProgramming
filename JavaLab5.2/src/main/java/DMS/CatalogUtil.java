@@ -38,7 +38,7 @@ public class CatalogUtil {
             for (Document document : catalog.getDocuments()) {
                 writer.write(document.getLocation() + "\n");
                 writer.write(document.getTags().size() + "\n");
-                for(Map.Entry<String,String> entry : document.getTags().entrySet()) {
+                for (Map.Entry<String, String> entry : document.getTags().entrySet()) {
                     writer.write(entry.getKey() + "\n" + entry.getValue() + "\n");
                 }
                 writer.write(document.getId());
@@ -58,17 +58,17 @@ public class CatalogUtil {
         try {
             BufferedReader reader = Files.newBufferedReader(Paths.get(path));
             int catalogSize = Integer.parseInt(reader.readLine());
-            for (int i=0; i<catalogSize;i++) {
+            for (int i = 0; i < catalogSize; i++) {
                 Document document = new Document(reader.readLine());
                 int tagsNr = Integer.parseInt(reader.readLine());
-                for (int j=0; i<tagsNr; i++){
-                    document.addTag(reader.readLine(),reader.readLine());
+                for (int j = 0; i < tagsNr; i++) {
+                    document.addTag(reader.readLine(), reader.readLine());
                 }
                 document.setId(reader.readLine());
                 catalog.add(document);
             }
             reader.close();
-        } catch(FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             System.out.println("File Not Found");
         } catch (IOException e) {
             System.out.println("Path not found");

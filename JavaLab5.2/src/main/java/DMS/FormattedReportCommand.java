@@ -4,6 +4,9 @@ package DMS;
  * @author : Calin Irina, I2E2
  */
 
+//I've written a simple template in order to display the content of the catalog in HTML format + updated the libraries.
+//I used FreeMarker for this and followed their examples
+
 import freemarker.template.*;
 
 import java.io.BufferedWriter;
@@ -35,19 +38,18 @@ public class FormattedReportCommand implements Command {
         Map<String, Object> input = new HashMap<String, Object>();
 
         for (Document document : catalog1.getDocuments()) {
-            input.put("document",document);
+            input.put("document", document);
         }
 
         try {
-            template.process(input,out);
-        } catch(TemplateException te) {
+            template.process(input, out);
+        } catch (TemplateException te) {
             System.out.println("Template exception occured");
-        }
-        finally {
+        } finally {
             out.flush();
             out.close();
         }
 
-        System.out.println("A file with the name HTMLReport.html was created at " + outputPath + "/HTMLFormattedReport.html");
+        System.out.println("A file with the name HTMLFormattedReport.html was created at " + outputPath + "/HTMLFormattedReport.html");
     }
 }
