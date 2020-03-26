@@ -26,7 +26,7 @@ public class MainFrame extends JFrame {
 
         //arrange the components in the container (frame)
         //JFrame uses a BorderLayout by default
-        add(canvas, BorderLayout.CENTER); //this is BorderLayout.CENTER
+        add(canvas, BorderLayout.CENTER);
         add(configPanel, BorderLayout.NORTH);
         add(controlPanel, BorderLayout.SOUTH);
         //invoke the layout manager

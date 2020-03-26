@@ -31,6 +31,8 @@ public class DrawingPanel extends JPanel {
 
     private void init() {
         setPreferredSize(new Dimension(W, H)); //don’t use setSize. Why?
+        //use setSize() if your component's parent has no layout manager
+        //setPreferredSize() and its related setMinimumSize and setMaximumSize if it does. And it does - grid.
         setBorder(BorderFactory.createEtchedBorder()); //for fun
         this.addMouseListener(new MouseAdapter() {
             @Override
