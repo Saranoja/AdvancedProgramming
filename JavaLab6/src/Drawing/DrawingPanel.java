@@ -10,6 +10,9 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import static java.awt.event.MouseEvent.MOUSE_CLICKED;
+import static java.awt.event.MouseEvent.MOUSE_PRESSED;
+
 public class DrawingPanel extends JPanel {
     final MainFrame frame;
     final static int W = 800, H = 600;
@@ -40,21 +43,65 @@ public class DrawingPanel extends JPanel {
                 drawShape(e.getX(), e.getY());
                 repaint();
             } //Can’t use lambdas, JavaFX does a better job in these cases
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+                if (frame.getConfigPanel().erasing)
+                    drawShape(e.getX(), e.getY());
+                repaint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                if (frame.getConfigPanel().erasing)
+                    drawShape(e.getX(), e.getY());
+                repaint();
+            }
         });
     }
 
     private void drawShape(int x, int y) {
         Random rand = new Random();
+        String figureType = (String) (frame.getConfigPanel().figureTypes.getSelectedItem());
         int radius = (Integer) (frame.getConfigPanel().shapesStroke.getValue());
-        int sides = (Integer) (frame.getConfigPanel().sidesField.getValue()); //get the value from UI (in Drawing.ConfigPanel)
-        String temp = (String) (frame.getConfigPanel().colorCombo.getSelectedItem());
-        Color color = new Color(0xFFFFFF);
-        if (temp == "Black")
-            color = Color.black;
-        else
-            color = new Color(rand.nextInt(0xFFFFFF)); //create a transparent random Color.
-        graphics.setColor(color);
-        graphics.fill(new RegularPolygon(x, y, radius, sides));
+        if (!frame.getConfigPanel().erasing) {
+            if (figureType == "Regular polygon") {
+                frame.getConfigPanel().sidesField.setVisible(true);
+                frame.getConfigPanel().sidesLabel.setVisible(true);
+                frame.getConfigPanel().colorCombo.enable();
+                int sides = (Integer) (frame.getConfigPanel().sidesField.getValue()); //get the value from UI (in Drawing.ConfigPanel)
+                String temp = (String) (frame.getConfigPanel().colorCombo.getSelectedItem());
+                Color color = new Color(0xFFFFFF);
+                if (temp == "Black")
+                    color = Color.black;
+                else
+                    color = new Color(rand.nextInt(0xFFFFFF)); //create a transparent random Color.
+                graphics.setColor(color);
+                graphics.fill(new RegularPolygon(x, y, radius, sides));
+            } else {
+                frame.getConfigPanel().sidesField.setVisible(false);
+                frame.getConfigPanel().sidesLabel.setVisible(false);
+                frame.getConfigPanel().colorCombo.disable();
+                switch (figureType) {
+                    case "Flower": {
+                        Flower flower = new Flower(x, y, radius, graphics);
+                        break;
+                    }
+                    case "Cloud": {
+                        Cloud cloud = new Cloud(x, y, radius, graphics);
+                        break;
+                    }
+                    case "Spectre": {
+                        Spectre spectre = new Spectre(x, y, radius, graphics);
+                        break;
+                    }
+                }
+            }
+        } else {
+            graphics.setColor(Color.white);
+            graphics.fill(new Eraser(x, y, radius));
+            //graphics.clearRect(x - radius / 2, y - radius / 2, radius, radius);
+        }
     }
 
     public void clear() {
