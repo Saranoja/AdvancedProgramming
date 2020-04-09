@@ -1,52 +1,65 @@
 /**
- * Author: Calin Irina, I2E2
+ * @Author: Calin Irina, I2E2
  */
 
 package Concurrency;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-import static java.lang.Thread.sleep;
+//changed the approach and implemented a semaphor to notify on turns
+//round will be incremented after each player extracts a token
+//turn will be round mod nrPlayers
 
 public class Board {
     ArrayList<Token> tokens;
-    public boolean available = false;
-    public int bound = 20;
+    public int bound = 30;
     int progressionSize;
-    public boolean gameOver = false;
+    public volatile boolean gameOver = false;
+    public int round = 0;
+    public int nrPlayers;
+    public volatile int turn = 1;
 
-    public Board(ArrayList<Token> tokens, int size) {
+    //added players number in constructor to keep track of the turn
+    public Board(ArrayList<Token> tokens, int size, int playersNumber) {
         this.tokens = tokens;
         this.progressionSize = size;
+        this.nrPlayers = playersNumber;
     }
 
-    public synchronized Token getToken() {
-        while(!gameOver) {
-            while (!available) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-            available = false;
-            notifyAll();
-            Random r = new Random();
-            int randomToken = r.nextInt(bound);
-            Token chosen = tokens.get(randomToken);
-            tokens.remove(randomToken);
-            bound--;
-            available = true;
-            notifyAll();
+    //updated function parameters so the player can extract a token depending on his strategy
+    public synchronized Token getToken(Player player, int tokenIndex) {
+        Token chosen = new Token(0);
+        while (turn != player.playerID) {
             try {
-                sleep(200);
+                wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            return chosen;
         }
-        Token t = new Token(0);
-        return t;
+        if (!gameOver && bound > 0) {
+            chosen = tokens.get(tokenIndex);
+            player.extractedTokens.add(chosen);
+            tokens.remove(tokenIndex);
+            bound--;
+            System.out.println("Player " + player.playerID + " extracted token with value " + chosen.value);
+            System.out.println("");
+            if (player.hasProgression()) {
+                System.out.println("Player " + player.playerID + " has won.");
+                System.out.println("Winning combination: " + player.extractedTokens);
+                gameOver = true;
+                notifyAll();
+            }
+        }
+        if (bound == 0)
+            gameOver = true;
+        ++round;
+        turn = round % nrPlayers + 1;
+        notifyAll();
+        return chosen;
     }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
 }

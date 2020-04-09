@@ -1,5 +1,5 @@
 /**
- * Author: Calin Irina, I2E2
+ * @Author: Calin Irina, I2E2
  */
 
 package Concurrency;
@@ -11,10 +11,11 @@ import java.util.List;
 
 import static java.lang.Thread.sleep;
 
-public class Player implements Runnable {
+public abstract class Player implements Runnable {
     int playerID;
     List<Token> extractedTokens;
     Board board;
+    protected volatile boolean terminated = false;
 
     public Player(int playerID, Board board) {
         this.playerID = playerID;
@@ -31,7 +32,7 @@ public class Player implements Runnable {
         System.out.println(stringBuilder.toString());
     }
 
-    private boolean IsProgression(int index) {
+    private boolean isProgression(int index) {
         int lastIncrement = 0;
         boolean isFirstIncrement = true;
         for (int i = index; i < (index + board.progressionSize - 1); i++) {
@@ -47,7 +48,7 @@ public class Player implements Runnable {
         return true;
     }
 
-    public synchronized boolean HasProgression() {
+    public synchronized boolean hasProgression() {
         extractedTokens.sort((o1, o2) -> {
             if (o1.isBlank()) {
                 return -1;
@@ -62,7 +63,7 @@ public class Player implements Runnable {
         for (Token token : extractedTokens) {
             int firstElementIndex = extractedTokens.indexOf(token);
             if (firstElementIndex <= extractedTokens.size() - board.progressionSize) {
-                if (IsProgression(firstElementIndex)) {
+                if (isProgression(firstElementIndex)) {
                     printProgression(firstElementIndex);
                     board.gameOver=true;
                     return true;
@@ -72,7 +73,7 @@ public class Player implements Runnable {
         return false;
     }
 
-    public int GetLargestProgression() {
+    public int getLargestProgression() {
         int n = extractedTokens.size();
         int L[][] = new int[n][n];
         int llap = 2;
@@ -104,38 +105,9 @@ public class Player implements Runnable {
         return llap;
     }
 
-    public synchronized void ExtractToken() {
-        if (!board.gameOver) {
-            Token token = board.getToken();
-            System.out.println("Player " + playerID + " extracted " + token);
-            extractedTokens.add(token);
-            System.out.println("Extracted tokens for player " + playerID + ": " + extractedTokens);
-        }
-        /* if(token.blank) {
-            int LAP = GetLargestProgression();
-        } */
-        if (HasProgression()) {
-            board.available = false;
-            notifyAll();
-            System.out.println("Player " + playerID + " won with the tokens: " + extractedTokens);
-        }
-        if (board.bound == 0 && !board.gameOver) {
-            board.available = false;
-            notifyAll();
-            System.out.println("Tokens finished and no progression was found.");
-        }
-    }
-
-    @Override
-    public void run() {
-        board.available = true;
-        while (board.available && !board.gameOver) {
-            ExtractToken();
-            try {
-                sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+    public synchronized void extractToken(int tokenIndex) {
+        if (!board.gameOver && board.turn==this.playerID) {
+            Token token = board.getToken(this, tokenIndex);
         }
     }
 

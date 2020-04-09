@@ -1,5 +1,16 @@
 Concurrent progression game:
 (Note: I have implemented the game for as many players as wanted, with whatever number of tokens)
+
+*Update for the optional part:
+Now the Board class works based on a semaphor which notifies the players whether it's their turn or not.
+There are 3 types of players extending the Player class: random, smart and manual. Each of them has its own "strategy".
+There's now also a daemon timekeeper, which will stop the game once a given number of seconds have passed.
+If the time is up and none of the players got the required progression, the one with the largest progression wins.
+(Although the top is done anyway in case of expanding the game and playing more rounds on points).
+Note: Optional-Case1.png and Optional-Case1-2.png show the behaviour of the app when there is a winner.
+Optional-Case2.png illustrates what happens when the time is up and the game is stopped.
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 Token class: provides a number from 1 to a given n - which represents the (shared) buffer part
 Board class: provides a token list, together with the game ending condition and the critical section
 Player class (implements Runnable): each player has its own ID to be identified with. run() method consists of
