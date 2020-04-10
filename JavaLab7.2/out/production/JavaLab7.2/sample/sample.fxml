@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="524.0" prefWidth="804.0" style="-fx-background-color: #cbaafa;">
+         <children>
+            <AnchorPane layoutX="19.0" layoutY="20.0" prefHeight="483.0" prefWidth="766.0" style="-fx-background-color: #412c5e;">
+               <children>
+                  <Text fill="WHITE" layoutX="60.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 - Manual Player">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="60.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2 - Smart Player">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="60.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3 -  Random Player">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="60.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Tokens:" wrappingWidth="174.39999999999998">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="234.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30]" wrappingWidth="505.08816146850586">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="60.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Extracted tokens" wrappingWidth="155.153076171875">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="246.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="417.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="588.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 3">
+                     <font>
+                        <Font size="28.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="246.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="97.39843749999994">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="417.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="97.39843749999994">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="588.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="97.39843749999994">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="60.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Turn: Player">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#f3f3f3" layoutX="173.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fill="#e33434" layoutX="56.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="163.20001220703125">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="startButton" layoutX="60.0" layoutY="374.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="97.0" text="START" />
+                  <TextField fx:id="tokenIndex" layoutX="381.0" layoutY="49.0" promptText="Insert token index" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

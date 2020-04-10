@@ -1,0 +1,3 @@
+//IN PROGRESS...
+JavaFX GUI for the progression game
+Changed JDK from 12 to 14 & added JavaFX SDK
