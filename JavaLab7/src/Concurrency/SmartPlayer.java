@@ -37,15 +37,15 @@ public class SmartPlayer extends Player {
             if (extractedTokens.size() >= 2) {
                 int low = 99;
                 int high = 0;
-                for (Token i : extractedTokens)
+                for (ProgressionToken i : extractedTokens)
                     if (low > i.getValue())
                         low = i.getValue();
-                for (Token i : extractedTokens)
+                for (ProgressionToken i : extractedTokens)
                     if (high < i.getValue())
                         high = i.getValue();
                 int cnt = 1;
                 int[] arr = new int[extractedTokens.size() + 1];
-                for (Token i : extractedTokens) {
+                for (ProgressionToken i : extractedTokens) {
                     arr[cnt] = (int) i.getValue();
                     cnt++;
                 }
@@ -54,7 +54,7 @@ public class SmartPlayer extends Player {
                 temp = findMissingUtil(arr, 0, extractedTokens.size() - 1, diff);
                 int index = -1;
                 boolean ok = false;
-                for (Token j : board.tokens) {
+                for (ProgressionToken j : board.tokens) {
                     if (temp == j.getValue()) {
                         index = board.tokens.indexOf(j);
                         --index;

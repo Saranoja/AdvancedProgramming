@@ -1,6 +1,16 @@
 Concurrent progression game:
-(Note: I have implemented the game for as many players as wanted, with whatever number of tokens)
+(Note: I have implemented the game for as many players as wanted, with whatever number of tokens/edges)
 
+*Update for the bonus part:
+Implemented the Clique Game, which, instead of the board, uses a complete graph. Tokens are now edges.
+The threading system is the same as for the optional part: using a semaphor, each player waits for his turn.
+The first player who gets a clique of the required size, wins. If time's up, the player with the largest
+clique wins. All players are manual this time.
+Note: getMaximumClique() and other helping methods were inspired from my research on the subject.
+Note2: I have now arranged the code so the user can pick all the variables himself, such as the game type,
+players number, game size etc.
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 *Update for the optional part:
 Now the Board class works based on a semaphor which notifies the players whether it's their turn or not.
 There are 3 types of players extending the Player class: random, smart and manual. Each of them has its own "strategy".

@@ -13,9 +13,11 @@ import static java.lang.Thread.sleep;
 
 public abstract class Player implements Runnable {
     int playerID;
-    List<Token> extractedTokens;
+    List<ProgressionToken> extractedTokens;
     Board board;
     protected volatile boolean terminated = false;
+
+    public Player() {}
 
     public Player(int playerID, Board board) {
         this.playerID = playerID;
@@ -36,36 +38,27 @@ public abstract class Player implements Runnable {
         int lastIncrement = 0;
         boolean isFirstIncrement = true;
         for (int i = index; i < (index + board.progressionSize - 1); i++) {
-            if (!extractedTokens.get(i).blank
-                    && !extractedTokens.get(i + 1).blank) {
-                if (isFirstIncrement) {
-                    lastIncrement = extractedTokens.get(i + 1).getValue() - extractedTokens.get(i).getValue();
-                    isFirstIncrement = false;
-                } else if ((extractedTokens.get(i + 1).getValue() - extractedTokens.get(i).getValue()) != lastIncrement)
-                    return false;
-            }
+            if (isFirstIncrement) {
+                lastIncrement = extractedTokens.get(i + 1).getValue() - extractedTokens.get(i).getValue();
+                isFirstIncrement = false;
+            } else if ((extractedTokens.get(i + 1).getValue() - extractedTokens.get(i).getValue()) != lastIncrement)
+                return false;
         }
         return true;
     }
 
     public synchronized boolean hasProgression() {
         extractedTokens.sort((o1, o2) -> {
-            if (o1.isBlank()) {
-                return -1;
-            } else if (o2.isBlank()) {
-                return 1;
-            } else {
                 return o1.getValue() - o2.getValue();
-            }
         });
         if (extractedTokens.size() < board.progressionSize)
             return false;
-        for (Token token : extractedTokens) {
+        for (ProgressionToken token : extractedTokens) {
             int firstElementIndex = extractedTokens.indexOf(token);
             if (firstElementIndex <= extractedTokens.size() - board.progressionSize) {
                 if (isProgression(firstElementIndex)) {
                     printProgression(firstElementIndex);
-                    board.gameOver=true;
+                    board.gameOver = true;
                     return true;
                 }
             }
@@ -106,7 +99,7 @@ public abstract class Player implements Runnable {
     }
 
     public synchronized void extractToken(int tokenIndex) {
-        if (!board.gameOver && board.turn==this.playerID) {
+        if (!board.gameOver && board.turn == this.playerID) {
             Token token = board.getToken(this, tokenIndex);
         }
     }

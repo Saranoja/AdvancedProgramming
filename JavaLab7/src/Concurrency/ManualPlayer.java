@@ -28,14 +28,16 @@ public class ManualPlayer extends Player {
                 try {
                     tokenIndex = Integer.parseInt(scanner.next());
                     --tokenIndex;
-                    if (tokenIndex > 0 || tokenIndex < board.bound) {
+                    if (tokenIndex >= 0 && tokenIndex < board.bound) {
                         tokenExists = true;
-                    } else System.out.println("Token with index " + tokenIndex + 1 + " doesn't exist");
+                    } else {
+                        System.out.println("Token with index " + (tokenIndex + 1) + " doesn't exist");
+                        tokenExists = false;
+                    }
                 } catch (Exception e) {
                     System.out.println(e);
                 }
         }
-
         return tokenIndex;
     }
 

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 //turn will be round mod nrPlayers
 
 public class Board {
-    ArrayList<Token> tokens;
-    public int bound = 30;
+    ArrayList<ProgressionToken> tokens;
+    public int bound;
     int progressionSize;
     public volatile boolean gameOver = false;
     public int round = 0;
@@ -20,15 +20,16 @@ public class Board {
     public volatile int turn = 1;
 
     //added players number in constructor to keep track of the turn
-    public Board(ArrayList<Token> tokens, int size, int playersNumber) {
+    public Board(ArrayList<ProgressionToken> tokens, int size, int playersNumber) {
         this.tokens = tokens;
         this.progressionSize = size;
         this.nrPlayers = playersNumber;
+        bound = tokens.size();
     }
 
     //updated function parameters so the player can extract a token depending on his strategy
-    public synchronized Token getToken(Player player, int tokenIndex) {
-        Token chosen = new Token(0);
+    public synchronized ProgressionToken getToken(Player player, int tokenIndex) {
+        ProgressionToken chosen = new ProgressionToken(0);
         while (turn != player.playerID) {
             try {
                 wait();
