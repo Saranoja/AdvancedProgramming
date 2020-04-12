@@ -1,3 +1,7 @@
+/**
+ * @Author: Calin Irina, I2E2
+ */
+
 package Concurrency;
 
 import java.util.ArrayList;
