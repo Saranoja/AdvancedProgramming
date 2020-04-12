@@ -23,7 +23,7 @@ public class CliquePlayer extends Player{
         while (graph.turn != playerID) {
         } //if it's not my turn, do nothing
         if (!graph.gameOver) {
-            System.out.println("Available tokens: " + graph.getEdges());
+            System.out.println("Available edges: " + graph.getEdges());
             System.out.println("[Player " + playerID + "] accumulated edges: " + this.extractedEdges);
             System.out.println("[Player " + playerID + "]: Pick a token by its index, starting from 1: ");
             while (!tokenExists && !graph.gameOver)
