@@ -4,12 +4,18 @@ package controllers; /**
 
 import java.sql.ResultSet;
 
+import db.ConnectionPool;
 import db.Database;
 
 //DAO
 
 public class ArtistController {
     Database db;
+    ConnectionPool cp;
+
+    public ArtistController(ConnectionPool cp) {
+        this.cp = cp;
+    }
 
     public ArtistController(Database db) {
         this.db = db;
@@ -18,6 +24,12 @@ public class ArtistController {
     public void create(String name, String country) {
         String query = "INSERT INTO artists(name, country) values('" + name + "','" + country + "')";
         db.doUpdate(query);
+        System.out.println(name + " added to artists.");
+    }
+
+    public void CPcreate(String name, String country) {
+        String query = "INSERT INTO artists(name, country) values('" + name + "','" + country + "')";
+        cp.doUpdate(query);
         System.out.println(name + " added to artists.");
     }
 

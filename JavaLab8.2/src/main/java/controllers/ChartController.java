@@ -6,6 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import db.ConnectionPool;
 import db.Database;
 import models.*;
 
@@ -13,6 +14,11 @@ import models.*;
 public class ChartController {
     Database db;
     List<Integer> artistsID = new ArrayList<>();
+    ConnectionPool cp;
+
+    public ChartController(ConnectionPool cp) {
+        this.cp = cp;
+    }
 
     public ChartController(Database db) {
         this.db = db;
@@ -29,6 +35,7 @@ public class ChartController {
             System.out.println(e.getMessage());
         }
         insertPopularity();
+        System.out.println("Chart updated");
     }
 
 

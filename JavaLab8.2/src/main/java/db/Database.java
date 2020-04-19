@@ -56,4 +56,8 @@ public class Database {
         return null;
     }
 
+    public Connection getCon() {
+        return con;
+    }
+
 }

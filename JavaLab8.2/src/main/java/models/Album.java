@@ -1,10 +1,9 @@
-package models;
+package models;/**
+ * @author: Calin Irina, I2E2
+ */
 
 import db.Database;
 
-/**
- * @author: Calin Irina, I2E2
- */
 
 public class Album {
     public int id = 10;

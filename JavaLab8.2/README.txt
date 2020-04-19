@@ -1,5 +1,15 @@
-JDBC App - Optional part
+JDBC App
 
+*Update for the bonus part:
+Created a connection pool using ApacheCommons, which translates to: Connection Factory, PoolableConnectionFactory,
+GenericObjectPoolConfig, GenericObjectPool, DataSource + the connection itself
+Created a ThreadPoolExecutor (ref. https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ThreadPoolExecutor.html)
+and a MainThread class (implementing Runnable) to illustrate the functionality of the connection pool
+Created 500 concurrent tasks which will execute the main thread, using ThreadPoolExecutor (see TPE)
+Run BonusMain with VisualVM for both cases - see ConnectionPoolAnalysis.png and SingletonAnalysis.png for comparison
+
+
+Optional part:
 Using JavaFaker, I've generated data and populated my tables
 + Created a table named Chart in the MusicAlbums Database, which contains all the artists and a
 randomly generated "popularity number" for each of them (artist_id being FK)

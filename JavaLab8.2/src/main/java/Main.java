@@ -12,6 +12,7 @@ import freemarker.template.*;
 import models.Artist;
 import models.Chart;
 import db.Database;
+import ThreadPoolExecutor.*;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -98,6 +99,8 @@ public class Main {
 
         System.out.println("A report with the name HTMLFormattedReport.html was created at " + outputPath + "/HTMLFormattedReport.html");
         chart.printTop();
+
+        db.getCon().close();
     }
 
 }
