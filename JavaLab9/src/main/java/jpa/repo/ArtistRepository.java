@@ -2,19 +2,17 @@
  * @author: Calin Irina, I2E2
  */
 
-package repo;
+package jpa.repo;
 
-import entity.Artist;
+import jpa.entity.Artist;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class ArtistRepository {
+public class ArtistRepository extends AbstractRepository<Artist> {
 
-    public static void create(EntityManager entityManager, Artist artist){
-        entityManager.getTransaction().begin();
-        entityManager.persist(artist);
-        entityManager.getTransaction().commit();
+    public ArtistRepository() {
+        super();
     }
 
     public static Artist findById(EntityManager entityManager, long id){

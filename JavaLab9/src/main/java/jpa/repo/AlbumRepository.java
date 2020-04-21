@@ -2,22 +2,21 @@
  * @author: Calin Irina, I2E2
  */
 
-package repo;
+package jpa.repo;
 
-import entity.Album;
+import jpa.entity.Album;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
-public class AlbumRepository {
-    public static void create(EntityManager entityManager, Album album){
-        entityManager.getTransaction().begin();
-        entityManager.persist(album);
-        entityManager.getTransaction().commit();
+public class AlbumRepository extends AbstractRepository<Album> {
+
+    public AlbumRepository() {
+        super();
     }
 
-    public static Album findById(EntityManager entityManager, long id){
-        Album album =entityManager.find(Album.class, id);
+    public static Album findById(long id){
+        Album album = entityManager.find(Album.class, id);
         return album;
     }
 

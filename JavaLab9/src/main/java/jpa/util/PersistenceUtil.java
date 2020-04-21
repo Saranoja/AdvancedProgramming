@@ -2,7 +2,7 @@
  * @author: Calin Irina, I2E2
  */
 
-package util;
+package jpa.util;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

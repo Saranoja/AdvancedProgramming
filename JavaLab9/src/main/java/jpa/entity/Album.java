@@ -2,7 +2,7 @@
  * @author: Calin Irina, I2E2
  */
 
-package entity;
+package jpa.entity;
 
 import javax.persistence.*;
 

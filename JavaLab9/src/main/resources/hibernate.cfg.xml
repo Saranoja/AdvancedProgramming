@@ -9,9 +9,9 @@
         <property name="connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
         <property name="dialect">org.hibernate.dialect.Oracle8iDialect</property>
         <property name="show_sql">true</property>
-        <mapping class="entity.Album"/>
-        <mapping class="entity.Artist"/>
-        <mapping class="entity.Chart"/>
+        <mapping class="jpa.entity.Album"/>
+        <mapping class="jpa.entity.Artist"/>
+        <mapping class="jpa.entity.Chart"/>
     </session-factory>
 
 </hibernate-configuration>
