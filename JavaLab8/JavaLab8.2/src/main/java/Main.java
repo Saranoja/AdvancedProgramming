@@ -67,7 +67,7 @@ public class Main {
         String outputPath = scanner.next();
         FileWriter fw = new FileWriter(outputPath + "/HTMLFormattedReport.html");
         BufferedWriter out = new BufferedWriter(fw);
-        File dir = new File("C:/Users/Irina/Desktop/AdvancedProgramming/JavaLab8.2/src/main/java/templates/");
+        File dir = new File("C:/Users/Irina/Desktop/AdvancedProgramming/JavaLab8/JavaLab8.2/src/main/java/templates/");
 
         //Configure FreeMarker
         Configuration configuration = new Configuration();
