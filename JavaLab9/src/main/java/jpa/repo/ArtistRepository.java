@@ -6,7 +6,6 @@ package jpa.repo;
 
 import jpa.entity.Artist;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 public class ArtistRepository extends AbstractRepository<Artist> {
@@ -15,14 +14,18 @@ public class ArtistRepository extends AbstractRepository<Artist> {
         super();
     }
 
-    public static Artist findById(EntityManager entityManager, long id){
-        Artist artist =entityManager.find(Artist.class, id);
+    public static Artist findById(long id) {
+        Artist artist = entityManager.find(Artist.class, id);
         return artist;
     }
 
-    public static List<Artist> findByName(EntityManager entityManager, String name){
-        List<Artist> artists = (List<Artist>) entityManager.createNamedQuery("artist.findByName").setParameter("inputname",name).getResultList();
+    public static List<Artist> findByName(String name) {
+        List<Artist> artists = (List<Artist>) entityManager.createNamedQuery("artist.findByName").setParameter("inputname", name).getResultList();
         return artists;
+    }
+
+    public static List<Artist> getAllArtists() {
+        return (List<Artist>) entityManager.createNamedQuery("artist.getAllArtists").getResultList();
     }
 
 }

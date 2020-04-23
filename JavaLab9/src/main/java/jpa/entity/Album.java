@@ -8,7 +8,10 @@ import javax.persistence.*;
 
 @NamedQueries(
         {@NamedQuery(name = "album.findByName", query = "SELECT a FROM Album a where a.name = :inputname"),
-                @NamedQuery(name = "album.findByArtist", query = "SELECT a FROM Album a where a.artistId = :inputId")}
+                @NamedQuery(name = "album.findByArtist", query = "SELECT a FROM Album a where a.artistId = :inputId"),
+                @NamedQuery(name = "album.getAllAlbums", query = "SELECT a FROM Album a"),
+                @NamedQuery(name = "album.getGenre", query = "SELECT g.genre FROM MusicGenre g where g.albumId = :inputId"),
+                @NamedQuery(name = "album.getArtist", query = "SELECT a.name FROM Artist a where a.id = :inputId")}
 )
 
 
@@ -19,6 +22,16 @@ public class Album {
     private String name;
     private long artistId;
     private Long releaseYear;
+
+    public Album() {
+    }
+
+    public Album(long id, String name, long artist, long releaseYear) {
+        this.name = name;
+        this.artistId = artist;
+        this.releaseYear = releaseYear;
+        this.id = id;
+    }
 
     @Id
     @Column(name = "ID")

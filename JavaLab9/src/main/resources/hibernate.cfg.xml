@@ -12,6 +12,7 @@
         <mapping class="jpa.entity.Album"/>
         <mapping class="jpa.entity.Artist"/>
         <mapping class="jpa.entity.Chart"/>
+        <mapping class="jpa.entity.MusicGenre"/>
     </session-factory>
 
 </hibernate-configuration>

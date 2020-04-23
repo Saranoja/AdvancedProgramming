@@ -6,7 +6,9 @@ package jpa.entity;
 
 import javax.persistence.*;
 
-@NamedQuery(name="artist.findByName", query="SELECT a FROM Artist a where a.name = :inputname")
+@NamedQueries({@NamedQuery(name = "artist.findByName", query = "SELECT a FROM Artist a where a.name = :inputname"),
+        @NamedQuery(name = "artist.getAllArtists", query = "SELECT a FROM Artist a")})
+
 
 @Entity
 @Table(name = "ARTISTS", schema = "BDA", catalog = "")
