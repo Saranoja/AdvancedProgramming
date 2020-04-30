@@ -1,11 +1,16 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 package Gomoku;
 
-import javax.naming.ldap.SortKey;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Objects;
 import java.util.Scanner;
+
+//setup() creates an intro for any player that joins the server
+//when 2 players have joined, the server starts the communication between them using *opponent* as a semaphore
 
 public class Player implements Runnable {
     private int mark;

@@ -1,3 +1,7 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 public class Board {
     private int size;
     private int[][] board = new int[19][19];

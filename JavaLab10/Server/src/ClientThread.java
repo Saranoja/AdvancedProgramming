@@ -1,9 +1,13 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 import Gomoku.Player;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
+
+//this will just run the specific thread for a player (at least for now) - i still have to add "other commands"
+//for now only STOP and MOVE work as commands
 
 public class ClientThread implements Runnable {
     private Socket socket;
@@ -34,7 +38,7 @@ public class ClientThread implements Runnable {
                     out.println(command.toUpperCase());
                 }
             } */
-        }  catch ( Exception e) {
+        } catch (Exception e) {
             System.out.println("Error:" + socket);
         }
     }

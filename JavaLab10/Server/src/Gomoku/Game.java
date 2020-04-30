@@ -1,6 +1,12 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 package Gomoku;
 
 import java.util.Arrays;
+
+//class used for checking conditions regarding the board
 
 public class Game {
     private Player currentPlayer;
@@ -18,10 +24,9 @@ public class Game {
         //vertical winning condition
         for (int i = 0; i < board.getSize(); ++i) {
             int count = 0;
-            for (int j = 1; j < board.getSize(); ++j)
-            {
+            for (int j = 1; j < board.getSize(); ++j) {
                 if (board.getBoard()[i][j] == board.getBoard()[i][j - 1] &&
-                        (board.getBoard()[i][j] == 1 || board.getBoard()[i][j] ==2) )
+                        (board.getBoard()[i][j] == 1 || board.getBoard()[i][j] == 2))
                     ++count;
                 else
                     count = 0;
@@ -33,10 +38,9 @@ public class Game {
         //horizontal winning condition
         for (int j = 0; j < board.getSize(); ++j) {
             int count = 0;
-            for (int i = 1; i < board.getSize(); ++i)
-            {
-                if (board.getBoard()[i][j] == board.getBoard()[i-1][j] &&
-                        (board.getBoard()[i][j] == 1 || board.getBoard()[i][j] ==2))
+            for (int i = 1; i < board.getSize(); ++i) {
+                if (board.getBoard()[i][j] == board.getBoard()[i - 1][j] &&
+                        (board.getBoard()[i][j] == 1 || board.getBoard()[i][j] == 2))
                     ++count;
                 else
                     count = 0;

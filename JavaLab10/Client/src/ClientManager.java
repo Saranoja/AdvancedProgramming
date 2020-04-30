@@ -1,7 +1,6 @@
-import java.io.PrintWriter;
-import java.util.Scanner;
-import java.net.Socket;
-import java.io.IOException;
+/**
+ * @author: Calin Irina, I2E2
+ */
 
 public class ClientManager {
     public static void main(String[] args) {

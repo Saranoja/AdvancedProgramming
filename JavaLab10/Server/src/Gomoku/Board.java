@@ -1,4 +1,10 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 package Gomoku;
+
+//pretty self-explanatory
 
 public class Board {
     private int size;

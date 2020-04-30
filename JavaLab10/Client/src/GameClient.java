@@ -1,8 +1,14 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.net.Socket;
 import java.io.IOException;
 
+//for now: client reads the intro and then it exchanges information with the server -
+// first writes the command and then reads the answer
 
 public class GameClient {
     private static final String ip = "127.0.0.1";

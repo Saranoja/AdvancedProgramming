@@ -1,3 +1,7 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 import Gomoku.Board;
 import Gomoku.Game;
 import Gomoku.Player;
@@ -6,12 +10,12 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.concurrent.Executors;
 
-/**
- * A simple TCP server which creates a thread for each connected client so it runs concurrently
- */
+//singleton class which creates a ThreadPool in order to support more Gomoku matches in parallel
+//a new game is created for every 2 players that join the game
+//a game is therefore shared by 2 players as a common resource for 2 threads
+
 public class GameServer {
 
     private static GameServer ourInstance = new GameServer();
