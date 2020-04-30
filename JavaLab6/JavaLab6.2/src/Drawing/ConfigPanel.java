@@ -109,7 +109,7 @@ public class ConfigPanel extends JPanel {
         add(vertexIndex2);
         add(vertexTarget2);
         add(addEdge);
-        //add(formatterButton);
+        add(formatterButton);
     }
 
     public MainFrame getFrame() {
