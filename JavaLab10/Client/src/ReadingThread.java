@@ -24,7 +24,7 @@ public class ReadingThread implements Runnable {
             response = in.nextLine();
             System.out.println("Response: " + response);
 
-            if (!response.equals("Exception Cell already occupied") && !response.toLowerCase().startsWith("unknown")) {
+            if (!response.startsWith("Exception") && !response.startsWith("Unknown")) {
                 String[] pieces = command.split(" ");
                 int col = Integer.parseInt(pieces[1]);
                 int row = Integer.parseInt(pieces[2]);

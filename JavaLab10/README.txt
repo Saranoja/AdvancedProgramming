@@ -21,7 +21,10 @@ block the whole game. There's now a thread for writing and a separate one for re
 a user can write commands and receive notifications WHILE waiting for the opponent's move.
 (This was done just for a "better UX" - logically, I am not supposed to move unless it is my
 turn... but what if I try to do so? I should be notified that I have to wait etc.)
-//last bullet is still in progress, I'm doing some research
+
+I have also generated a report of the game using Freemarker and uploaded the html on a web server (localhost)
+using Jsch of JCraft
+//also I'm working on implementing more commands (create, join)
 
 Compulsory:
 I have basically just respected the instructions given on the lab page
