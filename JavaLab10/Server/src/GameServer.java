@@ -9,6 +9,7 @@ import Gomoku.Player;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.util.concurrent.Executors;
 
@@ -22,15 +23,16 @@ public class GameServer {
     private PrintWriter out;
     private InputStreamReader in;
     private String command;
+    private static final int port = 59186;
 
     public static GameServer getInstance() {
         return ourInstance;
     }
 
     private GameServer() {
-        try (var listener = new ServerSocket(59186)) {
+        try (var listener = new ServerSocket(port)) {
             System.out.println("The game server is running...");
-            var pool = Executors.newFixedThreadPool(20); //employ a thread pool
+            var pool = Executors.newFixedThreadPool(200); //employ a thread pool
             // and use an executor service to manage the threads
             while (true) {
                 Board board = new Board(19);

@@ -48,11 +48,22 @@ public class Player implements Runnable {
         while (input.hasNextLine()) {
             String command = input.nextLine();
             System.out.println("Got command from player " + this.mark + ": " + command);
-            if (command.toUpperCase().startsWith("MOVE")) {
+            if (command.toLowerCase().startsWith("move")) {
                 String[] parts = command.split(" ");
                 int row = Integer.parseInt(parts[1]);
                 int col = Integer.parseInt(parts[2]);
                 processMoveCommand(col, row);
+            }
+            else if(command.toLowerCase().equals("stop"))
+            {
+                System.out.println("Player " + mark + " left");
+                try {
+                    socket.close();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                System.out.println("Game over");
+                break;
             }
             else {
                 System.out.println("Unknown command");
@@ -96,10 +107,16 @@ public class Player implements Runnable {
         } finally {
             if (opponent != null && opponent.output != null) {
                 opponent.output.println("Sorry, the other player left the game.");
+                try {
+                    opponent.socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             try {
                 socket.close();
             } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
