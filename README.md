@@ -12,4 +12,5 @@ Calin Irina, E2
 	Lab7 - compulsory, optional, bonus x 
 	Lab8 - compulsory, optional, bonus x
 	Lab9 - compulsory, optional, bonus x
-	Lab10 - compulsory, optional
+	Lab10 - compulsory, optional x
+	Lab11 - compulsory
