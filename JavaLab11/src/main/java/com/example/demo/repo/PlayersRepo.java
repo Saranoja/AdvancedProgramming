@@ -6,8 +6,10 @@ package com.example.demo.repo;
 
 import com.example.demo.Database;
 import com.example.demo.models.Player;
+import org.springframework.test.context.jdbc.Sql;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,8 +66,8 @@ public class PlayersRepo {
             while (rs.next()) {
                 player = new Player(rs.getString(1), rs.getString(2));
             }
-        } catch (Exception e) {
-            System.out.println("Player doesn't exist");
+        } catch (SQLException e) {
+            System.out.println("Player not found for id " + id);
         }
         return player;
     }

@@ -6,11 +6,12 @@ package com.example.demo.controller;
 
 import com.example.demo.models.Player;
 import com.example.demo.repo.PlayersRepo;
+import com.example.demo.services.PlayerService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -29,8 +30,9 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public Player getPlayer(@PathVariable("id") String id) throws SQLException {
-        return PlayersRepo.showPlayer(id);
+    public ResponseEntity<Player> getPlayer(@PathVariable("id") String id) {
+        Player player = PlayerService.getPlayer(id);
+        return new ResponseEntity<Player>(player, new HttpHeaders(), HttpStatus.OK);
     }
 
     @PostMapping
@@ -43,13 +45,13 @@ public class PlayerController {
                 "Player added successfully, id: " + id, HttpStatus.CREATED);
     }
 
+
     @PostMapping(value = "/create", consumes = "application/json")
-    public ResponseEntity<String>
+    public ResponseEntity<Player>
     createPlayer(@RequestBody Player player) {
+        Player player1 = PlayerService.createPlayer(player);
         players.add(player);
-        PlayersRepo.addPlayer(player);
-        return new ResponseEntity<>(
-                "Player added successfully", HttpStatus.CREATED);
+        return new ResponseEntity<Player>(player1, new HttpHeaders(), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -62,7 +64,7 @@ public class PlayerController {
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<String> deletePlayer(@PathVariable String id) {
-        PlayersRepo.deletePlayer(id);
-        return new ResponseEntity<>("Player has been deleted successfully", HttpStatus.OK);
+        String response = PlayerService.deletePlayer(id);
+        return new ResponseEntity<String>(response, new HttpHeaders(), HttpStatus.OK);
     }
 }
