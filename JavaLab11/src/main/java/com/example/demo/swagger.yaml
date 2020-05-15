@@ -1,0 +1,117 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Gomoku Manager
+  description: A sample API in order to keep track of players and games
+  contact:
+    name: Irina Calin
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /games:
+    get:
+      description: Return all games available in the database
+      operationId: getGames
+      parameters:
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: array
+        default:
+          description: unexpected error
+    post:
+      description: Creates a new game in the database
+      operationId: createGame
+      parameters:
+        - name: game
+          in: body
+          description: Game to be added to the db
+          schema:
+          required: true
+      responses:
+        "200":
+          description: ok
+        default:
+          description: unexpected error
+  /games/{id}:
+    get:
+      description: Returns a game with a specific id
+      operationId: getGame
+      parameters:
+        - name: id
+          in: path
+          description: ID of game to show
+          required: true
+          type: string
+      responses:
+        "200":
+          description: ok
+        default:
+          description: unexpected error
+
+  /players:
+    get:
+      description: Return all players available in the database
+      operationId: getPlayers
+      parameters:
+      responses:
+        "200":
+          description: ok
+          schema:
+            type: array
+        default:
+          description: unexpected error
+    post:
+      description: Creates a new player in the database
+      operationId: createPlayer
+      parameters:
+        - name: player
+          in: body
+          description: Player to be added to the db
+          schema:
+          required: true
+      responses:
+        "200":
+          description: ok
+        default:
+          description: unexpected error
+  /players/{id}:
+    get:
+      description: Returns a player with a specific id
+      operationId: getPlayer
+      parameters:
+        - name: id
+          in: path
+          description: ID of player to show
+          required: true
+          type: string
+      responses:
+        "200":
+          description: ok
+        default:
+          description: unexpected error
+
+
+
+    delete:
+      description: deletes a single player based on the ID supplied
+      operationId: deletePlayer
+      parameters:
+        - name: id
+          in: path
+          description: ID of player to delete
+          required: true
+          type: string
+      responses:
+        "204":
+          description: player deleted
+        default:
+          description: unexpected error

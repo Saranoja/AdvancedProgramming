@@ -1,5 +1,10 @@
 REST Services
 
+*Update for the Bonus part:
+I have generated the API Documentation using Swagger (see SwaggerConfig)
+Added dependencies for Spring Security & created the necessary classes to secure the services (/security)
+
+
 *Update for the Optional part:
 Created services for different operations on games (and players) i.e. inserting and reading
 using the support from Spring Boot
