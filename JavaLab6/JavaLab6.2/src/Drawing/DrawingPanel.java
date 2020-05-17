@@ -23,6 +23,7 @@ public class DrawingPanel extends JPanel {
     int copyY = -1000;
     ArrayList<Vertex> vertices = new ArrayList<>();
     ArrayList<Edge> edges = new ArrayList<>();
+    public ArrayList<Edge> secondaryEdges = new ArrayList<>();
     int index = 0;
 
     public DrawingPanel(MainFrame frame) {
@@ -76,10 +77,15 @@ public class DrawingPanel extends JPanel {
         Edge edge = new Edge(x, y, x1, y1, graphics);
         edge.setVertices(index1,index2);
         edges.add(edge);
+        secondaryEdges.add(new Edge(new Vertex(x,y,index1), new Vertex(x1,y1,index2)));
         vertices.get(index1).increaseDegree();
         vertices.get(index2).increaseDegree();
         //System.out.println("Degree for vertex " + index1 + "= " + vertices.get(index1).degree);
         //System.out.println("Degree for vertex " + index2 + "= " + vertices.get(index2).degree);
+    }
+
+    public void drawMe(int x, int y, int x1, int y1) {
+        Edge edge = new Edge(x, y, x1, y1, graphics);
     }
 
     private void drawShape(int x, int y) {

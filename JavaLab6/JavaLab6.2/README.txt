@@ -1,4 +1,10 @@
 GRAPH DRAWING TOOL
+
+*Update for the bonus part:
+I made it work, the "Format" button now draws the graph in a prettier way after detecting intersections and trying to
+minimize them
+Note: I have also added screenshots to illustrate the functionality
+
 How-to:
 1. Clicking on the canvas creates a vertex marked with a number
 2. To add an edge, simply type the corresponding numbers for its ends and click "Add edge"
@@ -11,4 +17,3 @@ research I've done (Isabel F. Cruz p.59) (with respect to computational efficien
 E.g. minimization of crossings / minimization of area
 Note: keep in mind that most problems regarding graph drawing are NP-hard)
 Resources available in the PDFs.
-Note2: I have also added a screenshot of an example.

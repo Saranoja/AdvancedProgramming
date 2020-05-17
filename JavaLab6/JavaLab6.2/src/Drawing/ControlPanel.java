@@ -60,8 +60,8 @@ public class ControlPanel extends JPanel {
         File location = new File(fileChooser.getSelectedFile().getAbsolutePath() + "\\" + fileName + ".png");
         try {
             ImageIO.write(frame.canvas.image, "PNG", location);
-        } catch (IOException exceptionx) {
-            System.err.println(exceptionx);
+        } catch (IOException exception) {
+            System.err.println(exception);
         }
     }
 

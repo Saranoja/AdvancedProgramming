@@ -89,7 +89,7 @@ public class ConfigPanel extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 Graph graph = new Graph(frame.getCanvas().getEdges(), frame.getCanvas().getVertices());
-                graph.Format();
+                graph.Format(frame.getCanvas().graphics);
                 frame.getCanvas().clear();
                 for (Vertex v : graph.vertices) {
                     frame.getCanvas().graphics.setColor(new Color(92, 200, 104));
@@ -97,6 +97,14 @@ public class ConfigPanel extends JPanel {
                     frame.getCanvas().graphics.setColor(Color.white);
                     frame.getCanvas().graphics.setFont(new Font("TimesRoman", Font.PLAIN, 20));
                     frame.getCanvas().graphics.drawString(Integer.toString(v.index),v.x-5,v.y+5);
+                }
+                for(Edge edge : graph.edges) {
+                    frame.getCanvas().graphics.setColor(new Color(92, 200, 104));
+                    //frame.getCanvas().graphics.drawLine(graph.vertices.get(edge.v1).x + 10,
+                            //graph.vertices.get(edge.v1).y + 10, graph.vertices.get(edge.v2).x - 10, graph.vertices.get(edge.v1).y - 10);
+                    //edge.drawMe(graph.vertices.get(edge.v2).x, graph.vertices.get(edge.v2).y, graph.vertices.get(edge.v1).x,
+                            //graph.vertices.get(edge.v1).y, frame.getCanvas().graphics);
+                    graph.drawEdgeForIndexes(edge.v1,edge.v2,frame.getCanvas().graphics);
                 }
                 frame.getCanvas().repaint();
             }

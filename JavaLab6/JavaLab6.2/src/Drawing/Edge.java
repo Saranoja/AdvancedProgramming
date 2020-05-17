@@ -32,6 +32,21 @@ public class Edge extends Polygon {
             g2.drawLine(x0 - 10, y0 - 10, x1 + 10, y1 + 10);
     }
 
+    public void drawMe(int x0, int y0, int x1, int y1, Graphics2D g) {
+        System.out.println("Redrawing edge");
+        //Graphics2D g2 = (Graphics2D) g;
+        g.setColor(new Color(92, 200, 104));
+        g.setStroke(new BasicStroke(5));
+        if (x0 < x1 && y0 < y1)
+            g.drawLine(x0 + 10, y0 + 10, x1 - 10, y1 - 10);
+        if (x0 < x1 && y0 > y1)
+            g.drawLine(x0 + 10, y0 - 10, x1 - 10, y1 + 10);
+        if (x0 > x1 && y0 < y1)
+            g.drawLine(x0 - 10, y0 + 10, x1 + 10, y1 - 10);
+        if (x0 > x1 && y0 > y1)
+            g.drawLine(x0 - 10, y0 - 10, x1 + 10, y1 + 10);
+    }
+
     public void setVertices(int v1, int v2) {
         this.v1 = v1;
         this.v2 = v2;
