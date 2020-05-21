@@ -4,6 +4,7 @@ import java.awt.*;
 public class MainFrame extends JFrame {
     ControlPanel controlPanel;
     DesignPanel designPanel;
+    PropertiesPanel propertiesPanel;
     final int W = 800, H = 600;
 
     public MainFrame() {
@@ -17,8 +18,28 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         controlPanel = new ControlPanel(this);
         designPanel = new DesignPanel(this);
+        propertiesPanel = new PropertiesPanel(this);
         add(controlPanel, BorderLayout.NORTH);
         add(designPanel, BorderLayout.CENTER);
+        add(propertiesPanel, BorderLayout.SOUTH);
     }
 
+    public void updateDesignPanel(DesignPanel designPanel) {
+        remove(this.designPanel);
+        this.designPanel = designPanel;
+        add(designPanel, BorderLayout.CENTER);
+        pack();
+    }
+
+    public DesignPanel getDesignPanel() {
+        return designPanel;
+    }
+
+    public ControlPanel getControlPanel() {
+        return controlPanel;
+    }
+
+    public PropertiesPanel getPropertiesPanel() {
+        return propertiesPanel;
+    }
 }
