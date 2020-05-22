@@ -25,17 +25,21 @@ public class LocaleExplore {
         while (true) {
             System.out.println(LocaleManager.getPrompt());
             String input = reader.readLine();
-            LocaleCommand localeCommand ;
+            LocaleCommand localeCommand;
             if (input.equals(LocaleManager.getQuit())) {
                 break;
             } else if (input.equals(LocaleManager.getShow())) {
                 localeCommand = new DisplayLocale();
             } else if (input.equals(LocaleManager.getSet())) {
                 System.out.println(LocaleManager.getTag());
-                String  input_tag =reader.readLine();
-                localeCommand = new SetLocale(input_tag);
+                String inputTag = reader.readLine();
+                localeCommand = new SetLocale(inputTag);
             } else if (input.equals(LocaleManager.Info())) {
                 localeCommand = new Info();
+            } else if (input.equals(LocaleManager.getCapital())) {
+                System.out.println(LocaleManager.getCountry());
+                String countryCode = reader.readLine();
+                localeCommand = new DisplayOptional(countryCode);
             } else {
                 localeCommand = new Error();
             }

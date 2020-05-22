@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 public class LocaleManager {
     static ResourceBundle messages;
 
-    public static void updateLocale(){
+    public static void updateLocale() {
         Locale locale = Locale.getDefault();
         messages = ResourceBundle.getBundle("res/Messages", locale);
     }
@@ -34,32 +34,48 @@ public class LocaleManager {
     public static String getInfo() {
         return messages.getString("info");
     }
+
     public static String Info() {
         return messages.getString("getInfo");
     }
+
     public static String getTag() {
         return messages.getString("tag");
     }
-    public static String getCountry(){
+
+    public static String getCountry() {
         return messages.getString("country");
     }
-    public static String getLanguage(){
+
+    public static String getLanguage() {
         return messages.getString("language");
     }
 
-    public static String getWeekdays(){
+    public static String getWeekdays() {
         return messages.getString("weekdays");
     }
-    public static String getCurrency(){
+
+    public static String getCurrency() {
         return messages.getString("currency");
     }
-    public static String getMonths(){
+
+    public static String getMonths() {
         return messages.getString("months");
     }
-    public static String getToday(){
+
+    public static String getToday() {
         return messages.getString("today");
     }
-    public static String getLocalSet(){
+
+    public static String getLocalSet() {
         return messages.getString("locale.set");
+    }
+
+    public static String getCapital() {
+        return messages.getString("capital");
+    }
+
+    public static String getCountryCode() {
+        return messages.getString("country_code");
     }
 }
