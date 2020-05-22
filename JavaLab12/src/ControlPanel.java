@@ -1,4 +1,6 @@
-import org.w3c.dom.Text;
+/**
+ * @author: Calin Irina, I2E2
+ */
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -9,8 +11,7 @@ import java.awt.event.ActionListener;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 
 public class ControlPanel extends JPanel {
     final MainFrame frame;

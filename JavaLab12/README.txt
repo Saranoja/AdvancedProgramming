@@ -4,6 +4,7 @@ Dynamic Swing Designer
 Used JavaBeans serialization in order to store all the components from the DesignPanel in XML
 + loading componens from such an xml based on the same logics
 Added specific buttons
+Created the properties table which will display the properties of a focused component (updatable)
 
 
 I have mostly just respected the specs, which means:

@@ -1,3 +1,7 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -8,7 +12,7 @@ public class PropertiesPanel extends JPanel {
 
     public PropertiesPanel(MainFrame frame) {
         this.frame = frame;
-        this.propertiesTable = new JTable(new DefaultTableModel(new String[]{"Type", "Name"}, 100));
+        this.propertiesTable = new JTable(new DefaultTableModel(new String[]{"Type", "Name", "Value"}, 100));
         init();
     }
 

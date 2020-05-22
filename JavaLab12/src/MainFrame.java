@@ -1,3 +1,7 @@
+/**
+ * @author: Calin Irina, I2E2
+ */
+
 import javax.swing.*;
 import java.awt.*;
 
