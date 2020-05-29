@@ -1,6 +1,7 @@
 # AdvancedProgramming
-Java Labs
-Calin Irina, E2
+Java Labs of the 2nd year of uni
+Irina Calin, group E2
+Each lab contains a separate readme with more details about the code
 
 # Work:
 	Lab1 - compulsory, optional, bonus x 

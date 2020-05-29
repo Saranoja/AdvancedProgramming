@@ -19,3 +19,4 @@ target/
 
 # Dot class
 *.class
+ojdbc14.jar
